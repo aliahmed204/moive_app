@@ -28,7 +28,7 @@
 
                     </div>
                     @php
-                        $models =  ['roles', 'admins', 'clients', 'orders'];
+                        $models =  config('laratrust_seeder.roles_structure.super_admin');
                         $actions = ['create', 'read', 'update', 'delete'];
                     @endphp
                     <h5>permissions <span class="text-danger">*</span></h5>
@@ -41,7 +41,7 @@
                       </thead>
                       <tbody>
 
-                          @foreach ($models as $model)
+                          @foreach ($models as $model=>$v)
                             <tr>
                                 <td>{{ucfirst($model)}}</td>
                                 <td>{{--chack all--}}

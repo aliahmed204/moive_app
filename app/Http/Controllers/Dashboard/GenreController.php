@@ -16,15 +16,16 @@ class GenreController extends Controller
     }
     public function data()
     {
-        $genres = Genre::select();
+        $genres = Genre::withCount(['movies']);
 
         return DataTables::of($genres)
             ->addColumn('record_select','dashboard.genres.data_table.record_select')
+            ->addColumn('related_movies','dashboard.genres.data_table.related_movies')
             ->editColumn('created_at', function (Genre $genre) {
                 return $genre->created_at->format('Y-m-d');
             })
             ->addColumn('actions','dashboard.genres.data_table.actions')
-            ->rawColumns(['record_select','actions'])
+            ->rawColumns(['record_select','related_movies','actions'])
             ->toJson();
     }
 

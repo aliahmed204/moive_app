@@ -1,18 +1,39 @@
 <aside class="app-sidebar">
     <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="https://randomuser.me/api/portraits/men/1.jpg" alt="User Image">
         <div>
-            <p class="app-sidebar__user-name">John Doe</p>
-            <p class="app-sidebar__user-designation">Frontend Developer</p>
+            <p class="app-sidebar__user-name">Ali Ahmed</p>
+            <p class="app-sidebar__user-designation">Backend Developer</p>
         </div>
     </div>
     <ul class="app-menu">
 
+        {{-- genres  --}}
         <li>
-            <a class="app-menu__item {{request()->is("*roles*") ?'active':''}}"
-               href="{{route('admin.roles.index')}}">
-                <i class="app-menu__icon bi bi-lock"></i>
+            <a class="app-menu__item  {{request()->is("*genres*") ?'active':''}}"
+               href="{{route('admin.genres.index')}}">
+                <i class="app-menu__icon bi bi-list"></i>
                 <span class="app-menu__label">
-                    Roles
+                    Genres
+                </span>
+            </a>
+        </li>
+        {{-- Movies  --}}
+        <li>
+            <a class="app-menu__item  {{request()->is("*movies*") ?'active':''}}"
+               href="{{route('admin.movies.index')}}">
+                <i class="app-menu__icon bi bi-film"></i>
+                <span class="app-menu__label">
+                    Movies
+                </span>
+            </a>
+        </li>
+        {{-- Actors  --}}
+        <li>
+            <a class="app-menu__item  {{request()->is("actors") ?'active':''}}"
+               href="{{route('admin.actors.index')}}">
+                <i class="app-menu__icon fa fa-star"></i>
+                <span class="app-menu__label">
+                    Actors
                 </span>
             </a>
         </li>
@@ -35,14 +56,15 @@
             </a>
         </li>
         <li>
-            <a class="app-menu__item  {{request()->is("*genres*") ?'active':''}}"
-               href="{{route('admin.genres.index')}}">
-                <i class="app-menu__icon bi bi-list"></i>
+            <a class="app-menu__item {{request()->is("*roles*") ?'active':''}}"
+               href="{{route('admin.roles.index')}}">
+                <i class="app-menu__icon bi bi-lock"></i>
                 <span class="app-menu__label">
-                    Genres
+                    Roles
                 </span>
             </a>
         </li>
+
             {{-- Settings  --}}
         <li class="treeview">
             <a class="app-menu__item {{request()->is("*settings*") ?'active':''}}" href="#" data-toggle="treeview">

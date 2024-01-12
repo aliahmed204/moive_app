@@ -35,6 +35,50 @@
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="{{asset('dashboard')}}/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{asset('dashboard')}}/plugins/select2/css/select2.min.css">
+
+    <!-- Magnific-Popup -->
+    <link rel="stylesheet" href="{{asset('dashboard')}}/plugins/Magnific-Popup-master/dist/magnific-popup.css">
+
+    <style>
+        .loader {
+            -webkit-animation: spin 2s linear infinite; /* Safari */
+            animation: spin 2s linear infinite;
+        }
+
+        .loader-sm{
+            border: 5px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 5px solid #009688;
+            width: 40px;
+            height: 40px;
+        }
+
+        .loader-md{
+            border: 8px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 8px solid #009688;
+            width: 90px;
+            height: 90px;
+        }
+        /* Safari */
+        @-webkit-keyframes spin {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        a{
+            text-decoration:none;
+        }
+
+    </style>
+
     @stack('css')
 
 </head>

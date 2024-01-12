@@ -20,6 +20,12 @@
 <!-- SweetAlert2 -->
 <script src="{{asset('dashboard')}}/plugins/sweetalert2/sweetalert2.min.js"></script>
 
+<!-- Magnific-Popup -->
+<script src="{{asset('dashboard')}}/plugins/Magnific-Popup-master/dist/jquery.magnific-popup.min.js"></script>
+
+{{--cahrt--}}
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
 <script>
     var Toast = Swal.mixin({
         toast: true,
@@ -37,9 +43,15 @@
         })
     </script>
 @endif
-
-
+<!-- Select2 -->
+<script src="{{asset('dashboard')}}/plugins/select2/js/select2.full.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.select22').select2();
+    });
+</script>
 @stack('js')
+
 
 
 <!-- Google analytics script-->

@@ -20,7 +20,7 @@ class GetGenres extends Command
      *
      * @var string
      */
-    protected $description = 'Command to fetch data from tmdb and insert to Db';
+    protected $description = 'fetch data from tmdb and insert to Db';
 
     /**
      * Execute the console command.
@@ -29,10 +29,13 @@ class GetGenres extends Command
     {
         $response = Http::get(config('services.tmdb.base_url').'/genre/movie/list?api_key='.config('services.tmdb.api_key'));
         foreach($response->json()['genres'] as $genre){
-            Genre::create([
+            Genre::updateOrCreate(
+                [
+                'external_id' => $genre['id']
+                ],[
                 'name' => $genre['name'],
-            ]);
+                ]);
         }
-        dd('done');
+        dump('done');
     }
 }

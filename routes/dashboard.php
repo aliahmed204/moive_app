@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Dashboard\ActorController;
 use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\GenreController;
+use App\Http\Controllers\Dashboard\MovieController;
 use App\Http\Controllers\Dashboard\PasswordController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\RoleController;
@@ -20,8 +22,16 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 /*Home*/
-Route::get('/home', [DashboardController::class, 'index'])->name('index');
+Route::group([
+    'prefix' => 'home',
+    'controller' => DashboardController::class,
+],function(){
+    Route::get('/home_statics','home_statics')->name('home_statics');
+    Route::get('/movies_chart','movies_chart')->name('movies_chart');
+    Route::get('/',  'index')->name('index');
+});
 
 /*Roles*/
 Route::get('/roles/data', [RoleController::class, 'data'])->name('roles.data');
@@ -62,7 +72,19 @@ Route::group([
     Route::put('update','update')->name('update');
 });
 
-/*Users*/
+/*genres*/
 Route::get('genres/data',[GenreController::class , 'data'])->name('genres.data');
 Route::delete('genres/bulk-delete',[GenreController::class , 'bulk_delete'])->name('genres.bulk_delete');
 Route::resource('genres',GenreController::class)->only(['index','destroy']);
+
+/*movies*/
+Route::get('movies/data',[MovieController::class , 'data'])->name('movies.data');
+Route::delete('movies/bulk-delete',[MovieController::class , 'bulk_delete'])->name('movies.bulk_delete');
+Route::resource('movies',MovieController::class )->only(['index','show','destroy']);
+
+/*actors*/
+Route::get('actors/data',[ActorController::class , 'data'])->name('actors.data');
+Route::delete('actors/bulk-delete',[ActorController::class , 'bulk_delete'])->name('actors.bulk_delete');
+Route::resource('actors',ActorController::class )->only(['index','destroy']);
+
+

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('genres', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('external_id');
             $table->string('name');
             $table->timestamps();
         });
